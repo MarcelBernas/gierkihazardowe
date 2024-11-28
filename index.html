@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="icon.png" type="image/png">
+  <script>
+    if(document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1] === undefined){
+      document.cookie = "username="+window.prompt('Witaj w strefie hazardu! Proszę podać nazwę użytkownika.')+"; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
+    }
+    if(document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] === undefined){
+      document.cookie = "chips=1000; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
+    }
+    function updateUserInfo(){
+      document.getElementById('welcome_text').innerText = 'Witaj, '+document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1]+'!';
+      document.getElementById('token_count').innerText = 'Masz '+document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1]+' żetonów.';
+    }
+  </script>
+  <title>Gierki hazardowe</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: Arial, sans-serif; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+      background-color: #f5f5f5; 
+      flex-direction: column;
+      padding-top: 3vh;
+    }
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #e0e0e0;
+      padding: 0.9vh 0;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      z-index: 10;
+    }
+
+    header img {
+      height: 2.5em;
+      width: auto;
+      margin-left: 2em;
+    }
+    
+    header h1 {
+      margin-left: 10px;
+      font-size: 2em;
+      display: inline-block;
+      line-height: 1.5em;
+    }
+
+    header #userinfo {
+      position: absolute;
+      right: 2em;
+      height: 2.75em;
+      min-width: 10vw;
+      max-width: 40vw;
+      background-color: #cccccc;
+    }
+    
+    footer {
+      width: 100%;
+      padding: 1.2vh 0;
+      background-color: #bdbdbd;
+      color: #333;
+      text-align: center;
+      font-size: 0.95em;
+    }
+    
+    /* Karta gry */
+    .karta-gry { 
+      background: #fff; 
+      border-radius: 8px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+      width: 13vw; 
+      text-align: center; 
+      cursor: pointer; 
+      text-decoration: none; 
+      transition: box-shadow 0.3s ease; 
+      margin-right: 1.4vw;
+      margin-bottom: 2vh;
+    }
+
+    #token_count, #welcome_text {
+      text-align: center;
+      font-weight: bold;
+      vertical-align: center;
+      height: 50%;
+      font-size: 90%;
+      padding: 2px;
+    }
+    
+    /* Obrazek gry */
+    .obrazek-gry { padding: 5%; }
+    .obrazek-gry img { width: 90%; height: auto; transition: transform 0.3s ease; }
+    
+    /* Informacje o grze */
+    .info-gry { padding: 1em; }
+    .tytul-gry { font-size: 2vw; font-weight: bold; margin-bottom: 0.7vh; color: #333; transition: color 0.3s ease; }
+    .opis-gry { font-size: 1vw; color: #555; }
+    
+    /* Przycisk Play */
+    .przycisk-play { padding: 1.1vh 3vw; background: #868a89; color: white; font-size: 1.2vw; font-weight: bold; border-radius: 8px; text-transform: uppercase; transition: background-color 0.3s ease; margin-top: 1.2vh; }
+    
+    /* Efekty najechania */
+    .karta-gry:hover { box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); }
+    .karta-gry:hover .obrazek-gry { padding: 2%; }
+    .karta-gry:hover .obrazek-gry img { transform: scale(1.05); }
+    .karta-gry:hover .przycisk-play { background: #098725; }
+
+    /* Zmiana koloru tytułu po najechaniu na całą kartę */
+    .karta-gry:hover .tytul-gry { color: #098725; }
+  </style>
+</head>
+<body onload="updateUserInfo()">
+  <header>
+    <img src="casino.png" alt="Logo">
+    <h1>Gierki hazardowe</h1>
+    <div id="userinfo">
+      <div id="welcome_text">Wczytywanie...</div>
+      <div id="token_count"></div>
+    </div>
+  </header>
+  <h1 style="margin-top: 0em; margin-bottom: 20px; color: #333;">Wybierz grę:</h1>
+  <!--Karty cz1-->
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <!-- Pierwsza karta -->
+    <a href="ruletka.html" target="_self" class="karta-gry">
+      <div class="obrazek-gry">
+        <img src="wheel.png" alt="Ruletka">
+      </div>
+      <div class="info-gry">
+        <div class="tytul-gry">Ruletka</div>
+        <div class="opis-gry">Postaw na numery, kolory lub sekcje<br>i zakręć by wygrać!</div>
+        <div class="przycisk-play">PLAY</div>
+      </div>
+    </a>
+
+    <!-- Druga karta -->
+    <a href="mines.html" target="_self" class="karta-gry">
+      <div class="obrazek-gry">
+        <img src="bomb.png" alt="Mines">
+      </div>
+      <div class="info-gry">
+        <div class="tytul-gry">Mines</div>
+        <div class="opis-gry">Zabaw się w sapera, odminuj pole przy okazji mnożąc nagrodę.</div>
+        <div class="przycisk-play">PLAY</div>
+      </div>
+    </a>
+
+    <a href="slots.html" target="_self" class="karta-gry">
+      <div class="obrazek-gry">
+        <img src="slots.png" alt="Mines">
+      </div>
+      <div class="info-gry">
+        <div class="tytul-gry">Slots</div>
+        <div class="opis-gry">Zakręć bębnem i wygraj!<br>Im lepsza kombinacja, tym większa nagroda.</div>
+        <div class="przycisk-play">PLAY</div>
+      </div>
+    </a>
+  </div>
+  <!--Karty cz2-->
+  <div style="display: flex; justify-content: center; align-items: center;">
+  <!-- Trzecia karta -->
+
+  </div>
+</body>
+  <footer>
+    <p>© 2024 Gierasowijebiepala.com Wszelkie prawa zastrzeżone hejterzy.</p>
+  </footer>
+</body>
+</html>
