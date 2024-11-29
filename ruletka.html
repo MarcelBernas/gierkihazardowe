@@ -7,9 +7,16 @@
     <link rel="shortcut icon" href="wheel.png" type="image/png">
     <title>Ruletka</title>
     <script>
-        if (document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] === undefined) {
-            document.cookie = "chips=1000; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-        }
+            if(document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1] === undefined){
+              document.cookie = "username="+window.prompt('Witaj w strefie hazardu! Proszę podać nazwę użytkownika.')+"; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
+            }
+            if(document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] === undefined){
+              document.cookie = "chips=1000; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
+            }
+            function updateUserInfo(){
+              document.getElementById('welcome_text').innerText = 'Witaj, '+document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1]+'!';
+              document.getElementById('token_count').innerText = 'Masz '+document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1]+' żetonów.';
+            }
     </script>
     <script src="ruletka.js" type="text/javascript"></script>
 
