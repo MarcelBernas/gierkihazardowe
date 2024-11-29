@@ -158,7 +158,7 @@
             cursor: pointer;
             z-index: 9;
             background-size: 80px 80px;
-            position: fixed;
+            position: absolute;
         }
 
         #c50 {
@@ -287,10 +287,12 @@
         </table>
     </div>
     <span id="chips_count">Wczytywanie...</span>
-    <div class="chips" id="c50"></div>
-    <div class="chips" id="c100"></div>
-    <div class="chips" id="c500"></div>
-    <div class="chips" id="c1000"></div>
+    <div>
+        <div class="chips" id="c50"></div>
+        <div class="chips" id="c100"></div>
+        <div class="chips" id="c500"></div>
+        <div class="chips" id="c1000"></div>
+    </div>
 
     <script>
         let bets = [];
