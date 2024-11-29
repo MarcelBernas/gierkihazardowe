@@ -38,25 +38,25 @@ function mouseMove(e) {
 function mouseUp(e) {
     document.removeEventListener('mousemove', mouseMove);
 
-    if (!isRouletteSpinning) {
-        let elementsUnderCursor = document.elementsFromPoint(e.clientX, e.clientY);
-        if (elementsUnderCursor.length > 0) {
-            for (let i in elementsUnderCursor) {
-                if (parseInt(elementsUnderCursor[i].id) >= 0) {
-                    updateBet(parseInt(activeElement.id.match(/\d+/g)), elementsUnderCursor[i].id);
-                } else if (["r1", "r2 ", "r3", "black", "red", "even", "odd"].includes(elementsUnderCursor[i].id)) {
-                    updateBet(parseInt(activeElement.id.match(/\d+/g)), elementsUnderCursor[i].id);
+    if (activeElement != undefined) {
+        if (!isRouletteSpinning) {
+            let elementsUnderCursor = document.elementsFromPoint(e.clientX, e.clientY);
+            if (elementsUnderCursor.length > 0) {
+                for (let i in elementsUnderCursor) {
+                    if (parseInt(elementsUnderCursor[i].id) >= 0) {
+                        updateBet(parseInt(activeElement.id.match(/\d+/g)), elementsUnderCursor[i].id);
+                    } else if (["r1", "r2 ", "r3", "black", "red", "even", "odd"].includes(elementsUnderCursor[i].id)) {
+                        updateBet(parseInt(activeElement.id.match(/\d+/g)), elementsUnderCursor[i].id);
+                    }
                 }
             }
         }
-        if (activeElement != undefined) {
+            
             activeElement.style.top = returnTopValue;
             activeElement.style.left = returnLeftValue;
 
             activeElement = undefined;
-        }
     }
-
 }
 
 function updateBet(chip, betName) {
