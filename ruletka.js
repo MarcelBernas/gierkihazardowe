@@ -201,6 +201,7 @@ function startRoulette() {
             // Aktualizacja salda
             document.cookie = "chips=" + (localTokens + winnings) + "; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
             isRouletteSpinning = false;
+            updateUserInfo();
             resetBet();
             rouletteStrip.removeEventListener('transitionend', resetPosition); // Usunięcie event listenera
             if (document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] < 1) {
