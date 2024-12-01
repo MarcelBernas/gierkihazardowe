@@ -40,6 +40,12 @@
         }
       });
     }
+    function resetTokens() {
+      if (confirm("Czy na pewno chcesz zresetować swoje żetony?")) {
+        document.cookie = "chips=1000; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
+        updateUserInfo();
+        }
+      }
   </script>
   <title>Gierki hazardowe</title>
   <style>
@@ -192,6 +198,12 @@
       width: 20vw;
     }
 
+    #token-display:hover {
+      color: red;
+      text-decoration: line-through;
+      cursor: pointer;
+    }
+
     #kolor-header-menu {
       display: flex;
       justify-content: left;
@@ -215,8 +227,8 @@
 
 
 
-    <div id="token-display">
-        Żetony: <span id="token_count">Ładowanie...</span>
+    <div id="token-display" onclick="resetTokens()">
+      Żetony: <span id="token_count">Ładowanie...</span>
     </div>
 
     <div id="userinfo">
