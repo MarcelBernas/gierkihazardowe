@@ -12,7 +12,7 @@ if (document.cookie.split("; ").find((row) => row.startsWith("username="))?.spli
   }
   function updateUserInfo() {
     document.getElementById('user-name').innerText = document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1];
-    document.getElementById('token_count').innerText = 'Masz ' + document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] + ' żetonów.';
+    document.getElementById('token_count').innerText = document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1];
   }
   function redirectToHome() {
     window.location.href = 'index.html';

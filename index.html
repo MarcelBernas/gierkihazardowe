@@ -14,7 +14,7 @@
     }
     function updateUserInfo() {
       document.getElementById('user-name').innerText = document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1];
-      document.getElementById('token_count').innerText = 'Masz ' + document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] + ' żetonów.';
+      document.getElementById('token_count').innerText = document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1];
     }
     function redirectToHome() {
       window.location.href = 'index.html';
@@ -78,6 +78,7 @@
       height: 2.5em;
       width: auto;
       margin-left: 2em;
+      transition: transform 0.3s ease;
     }
 
     header h1 {
@@ -85,6 +86,7 @@
       font-size: 2em;
       display: inline-block;
       line-height: 1.5em;
+      transition: transform 0.3s ease;
     }
 
     footer {
@@ -179,8 +181,9 @@
       font-weight: bold;
       color: #333;
       margin-left: auto;
-      margin-right: 10px;
-      text-align: right;
+      margin-right: auto;
+      text-align: center;
+      transform:translateX(-65%);
     }
 
     #kolor-header-menu {
@@ -261,7 +264,7 @@
   </div>
 </body>
 <footer>
-  <p>© 2024 Gierasowijebiepala.com Wszelkie prawa zastrzeżone hejterzy.</p>
+  <p>Strona stworzona przez Mikołaja Grabowskiego, Marcela Bernasia i Łukasza Dolnego.</p>
 </footer>
 </body>
 
