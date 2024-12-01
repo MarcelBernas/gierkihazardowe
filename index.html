@@ -32,7 +32,6 @@
       font-size: 0.95em;
     }
 
-    /* Karta gry */
     .karta-gry {
       background: #fff;
       border-radius: 8px;
@@ -46,7 +45,6 @@
       margin-bottom: 2vh;
     }
 
-    /* Obrazek gry */
     .obrazek-gry {
       padding: 5%;
     }
@@ -57,7 +55,6 @@
       transition: transform 0.3s ease;
     }
 
-    /* Informacje o grze */
     .info-gry {
       padding: 1em;
     }
@@ -75,7 +72,6 @@
       color: #555;
     }
 
-    /* Przycisk Play */
     .przycisk-play {
       padding: 1.1vh 3vw;
       background: #868a89;
@@ -88,7 +84,6 @@
       margin-top: 1.2vh;
     }
 
-    /* Efekty najechania */
     .karta-gry:hover {
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
@@ -105,7 +100,6 @@
       background: #098725;
     }
 
-    /* Zmiana koloru tytułu po najechaniu na całą kartę */
     .karta-gry:hover .tytul-gry {
       color: #098725;
     }
@@ -118,8 +112,6 @@
         <img src="casino.png" alt="Logo" id="logo">
         <h1>Gierki hazardowe</h1>
     </div>
-
-
 
     <div id="token-display" onclick="resetTokens()">
       Żetony: <span id="token_count">Ładowanie...</span>
@@ -136,9 +128,8 @@
     </div>
 </header>
   <h1 style="margin-top: 0em; margin-bottom: 20px; color: #333;">Wybierz grę:</h1>
-  <!--Karty cz1-->
   <div style="display: flex; justify-content: center; align-items: center;">
-    <!-- Pierwsza karta -->
+
     <a href="ruletka.html" target="_self" class="karta-gry">
       <div class="obrazek-gry">
         <img src="wheel.png" alt="Ruletka">
@@ -150,7 +141,6 @@
       </div>
     </a>
 
-    <!-- Druga karta -->
     <a href="mines.html" target="_self" class="karta-gry">
       <div class="obrazek-gry">
         <img src="bomb.png" alt="Mines">
@@ -173,15 +163,10 @@
       </div>
     </a>
   </div>
-  <!--Karty cz2-->
-  <div style="display: flex; justify-content: center; align-items: center;">
-    <!-- Trzecia karta -->
 
-  </div>
 </body>
 <footer>
   <p>Strona stworzona przez Mikołaja Grabowskiego, Marcela Bernasia i Łukasza Dolnego.</p>
 </footer>
 </body>
-
 </html>
