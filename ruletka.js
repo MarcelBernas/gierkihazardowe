@@ -6,18 +6,18 @@ let returnLeftValue;
 
 if (document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1] === undefined) {
     document.cookie = "username=" + window.prompt('Witaj w strefie hazardu! Proszę podać nazwę użytkownika.') + "; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-  }
-  if (document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] === undefined) {
+}
+if (document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] === undefined) {
     document.cookie = "chips=1000; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-  }
-  function updateUserInfo() {
+}
+function updateUserInfo() {
     document.getElementById('user-name').innerText = document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1];
     document.getElementById('token_count').innerText = document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1];
-  }
-  function redirectToHome() {
+}
+function redirectToHome() {
     window.location.href = 'index.html';
-  }
-  function editUserName() {
+}
+function editUserName() {
     const userNameSpan = document.getElementById('user-name');
     const editNameTextarea = document.getElementById('edit-name');
 
@@ -27,17 +27,17 @@ if (document.cookie.split("; ").find((row) => row.startsWith("username="))?.spli
     editNameTextarea.focus();
 
     editNameTextarea.addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
+        if (e.key === 'Enter') {
+            e.preventDefault();
 
 
-        userNameSpan.innerText = editNameTextarea.value.trim() || 'nazwa użytkownika';
-        userNameSpan.style.display = 'block';
-        editNameTextarea.style.display = 'none';
-        document.cookie = "username=" + editNameTextarea.value + "; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-      }
+            userNameSpan.innerText = editNameTextarea.value.trim() || 'nazwa użytkownika';
+            userNameSpan.style.display = 'block';
+            editNameTextarea.style.display = 'none';
+            document.cookie = "username=" + editNameTextarea.value + "; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
+        }
     });
-  }
+}
 
 function addListener(element) {
     element.addEventListener('mousedown', mouseDown);
@@ -86,11 +86,11 @@ function mouseUp(e) {
                 }
             }
         }
-            
-            activeElement.style.top = returnTopValue;
-            activeElement.style.left = returnLeftValue;
 
-            activeElement = undefined;
+        activeElement.style.top = returnTopValue;
+        activeElement.style.left = returnLeftValue;
+
+        activeElement = undefined;
     }
 }
 
@@ -207,7 +207,7 @@ function startRoulette() {
             if (document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] < 1) {
                 window.alert("Nie masz już żadnych żetonów. Wciśnij 'OK', żeby zresetować swoje postępy.");
                 document.cookie = "chips=1000; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-                location.reload(); 
+                location.reload();
             }
         });
     }

@@ -237,6 +237,17 @@
         #kolor-header-menu:hover {
             color: #098725;
         }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 1.2vh 0;
+            background-color: #bdbdbd;
+            color: #333;
+            text-align: center;
+            font-size: 0.95em;
+        }
     </style>
 </head>
 
@@ -288,8 +299,10 @@
         <div id="aktualnaStawka" class="wynik">Stawka: 0</div>
 
         <img src="bomb.png" alt="Bomb" class="bomb-image">
-
     </div>
+    <footer>
+        <p>Strona stworzona przez Mikołaja Grabowskiego, Marcela Bernasia i Łukasza Dolnego.</p>
+    </footer>
     <script>
         const plansza = document.getElementById('plansza');
         const wynik = document.getElementById('wynik');
