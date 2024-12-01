@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automat</title>
+  <link rel="stylesheet" href="slotsy.css"> <!-- Link do pliku CSS -->
+</head>
+<body>
+  <div class="kontener-automatu">
+    <h1>Automat</h1>
+    <div class="okno-automatu">
+      <div class="maszyna-automatu">
+        <div class="kolumna" id="kolumna1"></div>
+        <div class="kolumna" id="kolumna2"></div>
+        <div class="kolumna" id="kolumna3"></div>
+      </div>
+    </div>
+    <div class="kontrolki">
+      <input type="number" id="stawka" min="1" value="1" placeholder="Stawka">
+      <button id="krec">Kręć</button>
+    </div>
+    <div class="wynik">
+      <p id="wiadomosc"></p>
+      <p>Twoje żetony: <span id="zetony">100</span></p>
+    </div>
+    <div class="przycisk-zasady">
+      <button onclick="przełączZasady()">Zasady gry</button>
+    </div>
+  </div>
+
+  <div class="zasady" id="zasady">
+    <h2>Zasady gry</h2>
+    <p>1. Wybierz stawkę, którą chcesz postawić.</p>
+    <p>2. Kliknij przycisk <strong>Kręć</strong>, aby uruchomić automat.</p>
+    <p>3. Wygrane:</p>
+    <ul>
+      <li>3 takie same symbole - wygrywasz 3x stawkę.</li>
+      <li>2 takie same symbole - wygrywasz 2x stawkę.</li>
+      <li>Specjalne symbole: 🍀 (zwrot stawki), 💀 (zwrot połowy stawki), 💎 (2x stawka).</li>
+    </ul>
+    <button onclick="przełączZasady()">Zamknij</button>
+  </div>
+
+  <script src="slotsy.js"></script> <!-- Link do pliku JavaScript -->
+</body>
+</html>

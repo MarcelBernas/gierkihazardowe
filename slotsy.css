@@ -1,0 +1,113 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: #222;
+  color: #fff;
+}
+
+.kontener-automatu {
+  width: 450px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #444;
+  border: 5px solid #555;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.okno-automatu {
+  width: 100%;
+  height: 170px;
+  background-color: #222;
+  border: 5px solid #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.maszyna-automatu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.kolumna {
+  width: 100px;
+  height: 170px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 5px;
+  background-color: #666;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.kolumna div {
+  width: 100%;
+  height: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+}
+
+.kolumna .symbol-wygrany {
+  background-color: gold;
+  font-size: 40px;
+}
+
+.kontrolki {
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+input[type="number"] {
+  padding: 10px;
+  font-size: 16px;
+  width: 100px;
+  margin-right: 10px;
+}
+
+.wynik {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.przycisk-zasady {
+  margin-top: 30px;
+}
+
+.zasady {
+  display: none;
+  text-align: left;
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  margin: 50px auto;
+  width: 80%;
+  border-radius: 10px;
+}
