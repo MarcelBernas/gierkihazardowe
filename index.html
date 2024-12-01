@@ -5,42 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="icon.png" type="image/png">
-  <script>
-    if (document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1] === undefined) {
-      document.cookie = "username=" + window.prompt('Witaj w strefie hazardu! Proszę podać nazwę użytkownika.') + "; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-    }
-    if (document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] === undefined) {
-      document.cookie = "chips=1000; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-    }
-    function updateUserInfo() {
-      document.getElementById('user-name').innerText = document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1];
-      document.getElementById('token_count').innerText = document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1];
-    }
-    function redirectToHome() {
-      window.location.href = 'index.html';
-    }
-    function editUserName() {
-      const userNameSpan = document.getElementById('user-name');
-      const editNameTextarea = document.getElementById('edit-name');
-
-      userNameSpan.style.display = 'none';
-      editNameTextarea.style.display = 'block';
-      editNameTextarea.value = userNameSpan.innerText;
-      editNameTextarea.focus();
-
-      editNameTextarea.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-
-
-          userNameSpan.innerText = editNameTextarea.value.trim() || 'nazwa użytkownika';
-          userNameSpan.style.display = 'block';
-          editNameTextarea.style.display = 'none';
-          document.cookie = "username=" + editNameTextarea.value + "; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-        }
-      });
-    }
-  </script>
+  <link rel="stylesheet" href="header.css">
+  <script src="pliki-cookies.js"></script>
   <title>Gierki hazardowe</title>
   <style>
     body {
@@ -65,7 +31,6 @@
       font-size: 0.95em;
     }
 
-    /* Karta gry */
     .karta-gry {
       background: #fff;
       border-radius: 8px;
@@ -79,7 +44,6 @@
       margin-bottom: 2vh;
     }
 
-    /* Obrazek gry */
     .obrazek-gry {
       padding: 5%;
     }
@@ -90,7 +54,6 @@
       transition: transform 0.3s ease;
     }
 
-    /* Informacje o grze */
     .info-gry {
       padding: 1em;
     }
@@ -108,7 +71,6 @@
       color: #555;
     }
 
-    /* Przycisk Play */
     .przycisk-play {
       padding: 1.1vh 3vw;
       background: #868a89;
@@ -121,7 +83,6 @@
       margin-top: 1.2vh;
     }
 
-    /* Efekty najechania */
     .karta-gry:hover {
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
@@ -138,7 +99,6 @@
       background: #098725;
     }
 
-    /* Zmiana koloru tytułu po najechaniu na całą kartę */
     .karta-gry:hover .tytul-gry {
       color: #098725;
     }
@@ -229,9 +189,8 @@
     </div>
   </header>
   <h1 style="margin-top: 0em; margin-bottom: 20px; color: #333;">Wybierz grę:</h1>
-  <!--Karty cz1-->
   <div style="display: flex; justify-content: center; align-items: center;">
-    <!-- Pierwsza karta -->
+
     <a href="ruletka.html" target="_self" class="karta-gry">
       <div class="obrazek-gry">
         <img src="wheel.png" alt="Ruletka">
@@ -243,14 +202,13 @@
       </div>
     </a>
 
-    <!-- Druga karta -->
     <a href="mines.html" target="_self" class="karta-gry">
       <div class="obrazek-gry">
         <img src="bomb.png" alt="Mines">
       </div>
       <div class="info-gry">
         <div class="tytul-gry">Mines</div>
-        <div class="opis-gry">Zabaw się w sapera, odminuj pole przy okazji mnożąc nagrodę.</div>
+        <div class="opis-gry">Zabaw się w sapera, odminuj pole przy okazji mnożąc żetony.</div>
         <div class="przycisk-play">PLAY</div>
       </div>
     </a>
@@ -267,11 +225,9 @@
     </a>
   </div>
 
-  </div>
 </body>
 <footer>
   <p>Strona stworzona przez Mikołaja Grabowskiego, Marcela Bernasia i Łukasza Dolnego.</p>
 </footer>
 </body>
-
 </html>
