@@ -215,15 +215,14 @@
             left: 0;
             width: 100%;
             background-color: #e0e0e0;
-            padding: 0.9vh 0;
             text-align: left;
             display: flex;
             align-items: center;
             z-index: 10;
-            height: 3em;
+            max-height: 25vh;
         }
 
-        header img {
+        header #logo {
             height: 2.5em;
             width: auto;
             margin-left: 2em;
@@ -240,25 +239,34 @@
             text-align: center;
             font-weight: bold;
             position: absolute;
-            right: 2em;
+            right: 0;
             height: 2.75em;
-            min-width: 10vw;
-            max-width: 40vw;
-            background-color: #cccccc;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            width: 40vw;
+            padding-right: 2em;
         }
 
         #token-display {
             font-size: 1.2em;
             font-weight: bold;
             color: #333;
-            margin-left: auto;
-            margin-right: auto;
             text-align: center;
-            transform:translateX(-65%);
+            justify-content: center;
+            width: 20vw;
         }
 
         #kolor-header-menu {
+            display: flex;
+            justify-content: left;
+            align-items: center;
             cursor: pointer;
+            width: 40vw;
+        }
+
+        #kolor-header-menu:hover {
+            color: #098725;
         }
     </style>
 </head>
@@ -266,7 +274,7 @@
 <body onload='updateUserInfo()'>
     <header>
         <div id="kolor-header-menu" onclick="redirectToHome()">
-            <img src="casino.png" alt="Logo">
+            <img src="casino.png" alt="Logo" id="logo">
             <h1>Gierki hazardowe</h1>
         </div>
 
@@ -276,7 +284,7 @@
             Żetony: <span id="token_count">Ładowanie...</span>
         </div>
 
-        <div style="display: flex; align-items: center; margin-right: 2em;">
+        <div id="userinfo">
             <img id="user-icon" src="user.png" alt="User Icon" style="height: 2.5em; width: auto; margin-right: 0.5em;">
             <span id="user-name" style="font-size: 1.5em; font-weight: bold; color: #333; cursor: pointer;"
                 onclick="editUserName()">nazwa użytkownika</span>
