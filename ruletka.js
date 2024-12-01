@@ -6,18 +6,21 @@ let returnLeftValue;
 
 if (document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1] === undefined) {
     document.cookie = "username=" + window.prompt('Witaj w strefie hazardu! Proszę podać nazwę użytkownika.') + "; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-  }
-  if (document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] === undefined) {
+}
+if (document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] === undefined) {
     document.cookie = "chips=1000; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-  }
-  function updateUserInfo() {
+}
+
+function updateUserInfo() {
     document.getElementById('user-name').innerText = document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1];
     document.getElementById('token_count').innerText = document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1];
-  }
-  function redirectToHome() {
+}
+
+function redirectToHome() {
     window.location.href = 'index.html';
-  }
-  function editUserName() {
+}
+
+function editUserName() {
     const userNameSpan = document.getElementById('user-name');
     const editNameTextarea = document.getElementById('edit-name');
 
@@ -27,17 +30,15 @@ if (document.cookie.split("; ").find((row) => row.startsWith("username="))?.spli
     editNameTextarea.focus();
 
     editNameTextarea.addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-
-
-        userNameSpan.innerText = editNameTextarea.value.trim() || 'nazwa użytkownika';
-        userNameSpan.style.display = 'block';
-        editNameTextarea.style.display = 'none';
-        document.cookie = "username=" + editNameTextarea.value + "; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-      }
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            userNameSpan.innerText = editNameTextarea.value.trim() || 'nazwa użytkownika';
+            userNameSpan.style.display = 'block';
+            editNameTextarea.style.display = 'none';
+            document.cookie = "username=" + editNameTextarea.value + "; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
+        }
     });
-  }
+}
 
 function addListener(element) {
     element.addEventListener('mousedown', mouseDown);
@@ -69,7 +70,6 @@ function mouseMove(e) {
     activeElement.style.left = (activeElement.offsetLeft - newX) + 'px';
 }
 
-
 function mouseUp(e) {
     document.removeEventListener('mousemove', mouseMove);
 
@@ -80,17 +80,17 @@ function mouseUp(e) {
                 for (let i in elementsUnderCursor) {
                     if (parseInt(elementsUnderCursor[i].id) >= 0) {
                         updateBet(parseInt(activeElement.id.match(/\d+/g)), elementsUnderCursor[i].id);
-                    } else if (["r1", "r2 ", "r3", "black", "red", "even", "odd"].includes(elementsUnderCursor[i].id)) {
+                    } else if (["r1", "r2", "r3", "black", "red", "even", "odd"].includes(elementsUnderCursor[i].id)) {
                         updateBet(parseInt(activeElement.id.match(/\d+/g)), elementsUnderCursor[i].id);
                     }
                 }
             }
         }
-            
-            activeElement.style.top = returnTopValue;
-            activeElement.style.left = returnLeftValue;
 
-            activeElement = undefined;
+        activeElement.style.top = returnTopValue;
+        activeElement.style.left = returnLeftValue;
+
+        activeElement = undefined;
     }
 }
 
@@ -98,7 +98,6 @@ function updateBet(chip, betName) {
     if (parseInt(activeElement.id.match(/\d+/g)) > localTokens) {
         window.alert("Nie masz wystarczającej ilości żetonów!");
     } else {
-
         if (bets.find(x => x.name === betName) != undefined) {
             bets.find(x => x.name === betName).bet += chip;
             document.getElementById(betName).getElementsByTagName('span')[0].innerText = "Zakład: " + bets.find(x => x.name === betName).bet;
@@ -122,11 +121,9 @@ function resetBet() {
         bets = [];
         document.getElementById("current_bet").innerText = "Obecna suma zakładów: " + totalbet + ".";
     }
-
 }
 
 function startRoulette() {
-
     if (isRouletteSpinning == false && totalbet > 0) {
         isRouletteSpinning = true;
         const boxWidth = 96;
@@ -142,20 +139,22 @@ function startRoulette() {
         rouletteStrip.style.transform = `translateX(${targetPosition}px)`;
 
         // Po zakończeniu animacji
-        rouletteStrip.addEventListener('transitionend', function resetPosition() {
-            rouletteStrip.style.transition = 'none'; // Wyłączanie animacji na czas resetu
-            rouletteStrip.style.transform = `translateX(${-(randomIndex * boxWidth)}px)`; // Reset pozycji
+        rouletteStrip.addEventListener('transitionend', function stopAtPosition() {
+            // Po zakończeniu animacji, nie resetujemy pozycji, tylko zatrzymujemy na wylosowanej liczbie
+            rouletteStrip.style.transition = 'none'; // Wyłączamy animację na czas "stania" ruletki
+            rouletteStrip.style.transform = `translateX(${targetPosition}px)`; // Ustawiamy pozycję na tej samej
 
             const result = numbers[randomIndex]; // Numer pod strzałką
             resultDisplay.textContent = `Wylosowano: ${result}`;
 
-            // Sprawdzenie wyniku (najgorszy kod tego roku.)
+            // Sprawdzenie wyniku
             let winnings = 0;
             for (let object of bets) {
                 if (object.name == result) {
                     winnings += object.bet * 36;
                 }
             }
+
             if ([32, 19, 21, 25, 34, 27, 36, 30, 23, 5, 16, 1, 14, 9, 18, 7, 12, 3].includes(result) && bets.find(x => x.name == 'red') != undefined) {
                 winnings += bets.find(x => x.name == 'red').bet * 2;
             }
@@ -180,7 +179,7 @@ function startRoulette() {
                 winnings += bets.find(x => x.name == '13-24').bet * 3;
             }
             if ([25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36].includes(result) && bets.find(x => x.name == '25-36') != undefined) {
-                winnings += bets.find(x => x.name == '25-32').bet * 3;
+                winnings += bets.find(x => x.name == '25-36').bet * 3;
             }
 
             if (result % 2 == 0 && bets.find(x => x.name == 'even') != undefined) {
@@ -203,11 +202,12 @@ function startRoulette() {
             isRouletteSpinning = false;
             updateUserInfo();
             resetBet();
-            rouletteStrip.removeEventListener('transitionend', resetPosition); // Usunięcie event listenera
+            rouletteStrip.removeEventListener('transitionend', stopAtPosition); // Usunięcie event listenera
+
             if (document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1] < 1) {
                 window.alert("Nie masz już żadnych żetonów. Wciśnij 'OK', żeby zresetować swoje postępy.");
                 document.cookie = "chips=1000; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
-                location.reload(); 
+                location.reload();
             }
         });
     }
