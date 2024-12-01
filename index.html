@@ -9,6 +9,9 @@
   <script src="pliki-cookies.js"></script>
   <title>Gierki hazardowe</title>
   <style>
+    header {
+      position: fixed;
+    }
     body {
       font-family: Arial, sans-serif;
       display: flex;
@@ -102,66 +105,6 @@
     .karta-gry:hover .tytul-gry {
       color: #098725;
     }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #e0e0e0;
-      text-align: left;
-      display: flex;
-      align-items: center;
-      z-index: 10;
-      max-height: 25vh;
-    }
-
-    header #logo {
-      height: 2.5em;
-      width: auto;
-      margin-left: 2em;
-    }
-
-    header h1 {
-      margin-left: 10px;
-      font-size: 2em;
-      display: inline-block;
-      line-height: 1.5em;
-    }
-
-    header #userinfo {
-      text-align: center;
-      font-weight: bold;
-      position: absolute;
-      right: 0;
-      height: 2.75em;
-      display: flex;
-      align-items: center;
-      justify-content: right;
-      width: 40vw;
-      padding-right: 2em;
-    }
-
-    #token-display {
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #333;
-      text-align: center;
-      justify-content: center;
-      width: 20vw;
-    }
-
-    #kolor-header-menu {
-      display: flex;
-      justify-content: left;
-      align-items: center;
-      cursor: pointer;
-      width: 40vw;
-    }
-
-    #kolor-header-menu:hover {
-      color: #098725;
-    }
   </style>
 </head>
 
@@ -174,7 +117,7 @@
 
 
 
-    <div id="token-display">
+    <div id="token-display" onclick="resetTokens()">
       Żetony: <span id="token_count">Ładowanie...</span>
     </div>
 
