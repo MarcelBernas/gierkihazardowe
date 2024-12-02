@@ -343,7 +343,7 @@
         document.getElementById("current_bet").innerText = "Obecny zakład: " + totalbet + ".";
 
         for (let i = 0; i < document.getElementsByClassName("chips").length; i++) {
-            addListener(document.getElementsByClassName("chips")[i]); //odniesienie do funkcji z pliku ruletka.js
+            addListener(document.getElementsByClassName("chips")[i]); 
         }
 
         const numbers = [0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26];
@@ -352,11 +352,11 @@
         const balanceDisplay = document.getElementById('balance');
         let balance = 1000;
 
-        // Funkcja do tworzenia prostokątów z liczbami
+        
         function createBoxes() {
-            rouletteStrip.innerHTML = ''; // Czyszczenie
+            rouletteStrip.innerHTML = '';
 
-            // Dodanie wszystkich numerów 5 razy, aby umożliwić płynne zapętlanie
+            // Dodanie wszystkich numerów 5 razy, zeby je zapentlac 
             for (let i = 0; i < 5; i++) {
                 numbers.forEach((num, index) => {
                     const box = document.createElement('div');
