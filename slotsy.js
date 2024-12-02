@@ -34,20 +34,20 @@ function stwórzAnimację(kolumna, symbolKońcowy) {
     kolumna.innerHTML = "";
     const symboleDoAnimacji = [...Array(20)].map(() => symbole[Math.floor(Math.random() * symbole.length)]);
 
-    // Dodajemy symbole na górze
+    
     symboleDoAnimacji.slice(0, 5).forEach((symbol) => {
       const div = document.createElement("div");
       div.textContent = symbol;
       kolumna.appendChild(div);
     });
 
-    // Dodajemy wylosowany symbol na środek
+    
     const divKońcowy = document.createElement("div");
     divKońcowy.textContent = symbolKońcowy;
     divKońcowy.classList.add("symbol-wygrany");
     kolumna.appendChild(divKońcowy);
 
-    // Dodajemy losowe symbole na dole
+  
     symboleDoAnimacji.slice(5).forEach((symbol) => {
       const div = document.createElement("div");
       div.textContent = symbol;
@@ -64,7 +64,7 @@ function stwórzAnimację(kolumna, symbolKońcowy) {
         kolumna.appendChild(divKońcowy);
         resolve();
       }
-    }, 15); // Przyspieszono animację
+    }, 15); 
   });
 }
 
