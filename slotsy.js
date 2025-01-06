@@ -68,6 +68,44 @@ function stwórzAnimację(kolumna, symbolKońcowy) {
   });
 }
 
+function wyliczWygraną(symbol1, symbol2, symbol3, stawka, wiadomosc) {
+  const licznikSymboli = {};
+  [symbol1, symbol2, symbol3].forEach((symbol) => {
+    licznikSymboli[symbol] = (licznikSymboli[symbol] || 0) + 1;
+  });
+
+  wiadomosc.textContent = "";
+
+  console.log(licznikSymboli);
+
+  // kalkulowanie stawki na podstawie symboli specjalnych
+  for (const symbol in licznikSymboli) {
+    if (symboleSpecjalne.includes(symbol)) {
+      if (symbol === '🍀') {
+        wiadomosc.textContent += 'Zwrot stawki';
+        return stawka;
+      } else if (symbol === '💀') {
+        wiadomosc.textContent += 'Zwrot połowy stawki';
+        return stawka / 2;
+      } else if (symbol === '💎') {
+        wiadomosc.textContent += 'Zwrot podwójnej stawki';
+        return stawka * 2;
+      }
+    }
+  }
+
+  if (Object.keys(licznikSymboli).length === 1) {
+    wiadomosc.textContent += 'Zwrot potrójnej stawki';
+    return stawka * 3;
+  } else if (Object.keys(licznikSymboli).length === 2) {
+    wiadomosc.textContent += 'Zwrot podwójnej stawki';
+    return stawka * 2;
+  }
+
+  wiadomosc.textContent += 'Przegrana';
+  return 0;
+}
+
 async function krec() {
   const stawka = parseInt(stawkaWejście.value, 10);
 
@@ -81,6 +119,7 @@ async function krec() {
     return;
   }
 
+  console.log(zetony)
   zetony -= stawka;
   zetonyWyświetlacz.textContent = zetony;
 
@@ -94,20 +133,7 @@ async function krec() {
     stwórzAnimację(kolumna3, symbol3),
   ]);
 
-  const licznikSymboli = {};
-  [symbol1, symbol2, symbol3].forEach((symbol) => {
-    licznikSymboli[symbol] = (licznikSymboli[symbol] || 0) + 1;
-  });
-
-  if (licznikSymboli[symbol1] === 3) {
-    wiadomosc.textContent = `Wygrana! Zgarnąłeś ${stawka * 3} żetonów!`;
-    zetony += stawka * 3;
-  } else if (licznikSymboli[symbol1] === 2) {
-    wiadomosc.textContent = `Wygrana! Zgarnąłeś ${stawka * 2} żetonów!`;
-    zetony += stawka * 2;
-  } else {
-    wiadomosc.textContent = `Przegrałeś ${stawka} żetonów!`;
-  }
+  zetony += wyliczWygraną(symbol1, symbol2, symbol3, stawka, wiadomosc);
 
   zetonyWyświetlacz.textContent = zetony;
   krecPrzycisk.disabled = false;

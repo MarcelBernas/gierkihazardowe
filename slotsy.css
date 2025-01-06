@@ -62,7 +62,7 @@ body {
 }
 
 .kolumna .symbol-wygrany {
-  background-color: gold;
+  background-color: rgb(0, 0, 0);
   font-size: 40px;
 }
 
