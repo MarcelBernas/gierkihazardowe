@@ -76,8 +76,6 @@ function wyliczWygraną(symbol1, symbol2, symbol3, stawka, wiadomosc) {
 
   wiadomosc.textContent = "";
 
-  console.log(licznikSymboli);
-
   // kalkulowanie stawki na podstawie symboli specjalnych
   for (const symbol in licznikSymboli) {
     if (symboleSpecjalne.includes(symbol)) {
@@ -119,7 +117,6 @@ async function krec() {
     return;
   }
 
-  console.log(zetony)
   zetony -= stawka;
   zetonyWyświetlacz.textContent = zetony;
 
