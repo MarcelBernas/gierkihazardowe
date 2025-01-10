@@ -12,6 +12,7 @@
         header {
             position: fixed;
         }
+
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -173,7 +174,8 @@
         </div>
 
         <div id="userinfo">
-            <img id="user-icon" src="assets/img/user.png" alt="User Icon" style="height: 2.5em; width: auto; margin-right: 0.5em;">
+            <img id="user-icon" src="assets/img/user.png" alt="User Icon"
+                style="height: 2.5em; width: auto; margin-right: 0.5em;">
             <span id="user-name" style="font-size: 1.5em; font-weight: bold; color: #333; cursor: pointer;"
                 onclick="editUserName()">nazwa użytkownika</span>
             <textarea id="edit-name"
@@ -236,56 +238,62 @@
             liczbaBomb = parseInt(liczbaBombInput.value);
             stawka = parseFloat(stawkaInput.value);
             const wplacono = parseFloat(stawkaInput.value);
-            if (wplacono > (parseInt(document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1]))) {
-                window.alert("Masz za mało żetonów.");
-            } else {
-                rozmiarPlanszyInput.disabled = true;
-                liczbaBombInput.disabled = true;
-                stawkaInput.disabled = true;
-                rozpocznijBtn.disabled = true;
+            
+            if (stawka < 1) {
+                alert("Stawka nie może być mniejsza od 1, biedaku.");
+                return;
+            }
+            if (wplacono > (parseInt(document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1]))) {            //refactor this
+                alert("Masz za mało żetonów.");
+                return;
+            }
 
-                if (liczbaBomb >= rozmiarPlanszy * rozmiarPlanszy) {
-                    alert("Liczba bomb nie może być większa lub równa liczbie pól!");
-                    return;
-                }
+            if (liczbaBomb >= rozmiarPlanszy * rozmiarPlanszy) {
+                alert("Liczba bomb nie może być większa lub równa liczbie pól!");
+                return;
+            }
 
-                if (liczbaBomb < 1) {
-                    alert("Liczba bomb nie może być mniejsza niż 1!");
-                    return;
-                }
+            if (liczbaBomb < 1) {
+                alert("Liczba bomb nie może być mniejsza niż 1!");
+                return;
+            }
 
-                graAktywna = true;
-                danePlanszy = [];
-                ujawnionePola = 0;
-                trafionePola = 0;
-                wynik.textContent = `Wpłacono: ${stawka}`;
-                aktualnaStawka.textContent = `Stawka: ${stawka}`;
-                plansza.innerHTML = '';
+            rozmiarPlanszyInput.disabled = true;
+            liczbaBombInput.disabled = true;
+            stawkaInput.disabled = true;
+            rozpocznijBtn.disabled = true;
 
-                plansza.style.gridTemplateColumns = `repeat(${rozmiarPlanszy}, 60px)`;
+            graAktywna = true;
+            danePlanszy = [];
+            ujawnionePola = 0;
+            trafionePola = 0;
+            wynik.textContent = `Wpłacono: ${stawka}`;
+            aktualnaStawka.textContent = `Stawka: ${stawka}`;
+            plansza.innerHTML = '';
 
-                wszystkiePola = rozmiarPlanszy * rozmiarPlanszy;
-                pozostalePola = wszystkiePola - liczbaBomb;
+            plansza.style.gridTemplateColumns = `repeat(${rozmiarPlanszy}, 60px)`;
 
-                for (let i = 0; i < wszystkiePola; i++) {
-                    const komorka = document.createElement('div');
-                    komorka.classList.add('komorka-planszy');
-                    komorka.dataset.index = i;
-                    komorka.addEventListener('click', kliknijKomorke);
-                    plansza.appendChild(komorka);
-                    danePlanszy.push({
-                        ujawnione: false,
-                        jestBomba: false,
-                    });
-                }
+            wszystkiePola = rozmiarPlanszy * rozmiarPlanszy;
+            pozostalePola = wszystkiePola - liczbaBomb;
 
-                let bombyUstawione = 0;
-                while (bombyUstawione < liczbaBomb) {
-                    let losowyIndex = Math.floor(Math.random() * wszystkiePola);
-                    if (!danePlanszy[losowyIndex].jestBomba) {
-                        danePlanszy[losowyIndex].jestBomba = true;
-                        bombyUstawione++;
-                    }
+            for (let i = 0; i < wszystkiePola; i++) {
+                const komorka = document.createElement('div');
+                komorka.classList.add('komorka-planszy');
+                komorka.dataset.index = i;
+                komorka.addEventListener('click', kliknijKomorke);
+                plansza.appendChild(komorka);
+                danePlanszy.push({
+                    ujawnione: false,
+                    jestBomba: false,
+                });
+            }
+
+            let bombyUstawione = 0;
+            while (bombyUstawione < liczbaBomb) {
+                let losowyIndex = Math.floor(Math.random() * wszystkiePola);
+                if (!danePlanszy[losowyIndex].jestBomba) {
+                    danePlanszy[losowyIndex].jestBomba = true;
+                    bombyUstawione++;
                 }
             }
 

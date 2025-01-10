@@ -6,7 +6,7 @@ const zetonyWyświetlacz = document.getElementById("zetony");
 const stawkaWejście = document.getElementById("stawka");
 const krecPrzycisk = document.getElementById("krec");
 
-let zetony = 100;
+let zetony = document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1];
 const symboleZwykle = ["🍒", "🍋", "🍊", "🍇", "⭐"];
 const symboleSpecjalne = ["🍀", "💀", "💎"];
 const symbole = [...symboleZwykle, ...symboleSpecjalne];
@@ -74,33 +74,31 @@ function wyliczWygraną(symbol1, symbol2, symbol3, stawka, wiadomosc) {
     licznikSymboli[symbol] = (licznikSymboli[symbol] || 0) + 1;
   });
 
-  wiadomosc.textContent = "";
-
   // kalkulowanie stawki na podstawie symboli specjalnych
   for (const symbol in licznikSymboli) {
     if (symboleSpecjalne.includes(symbol)) {
       if (symbol === '🍀') {
-        wiadomosc.textContent += 'Zwrot stawki';
+        wiadomosc.textContent = 'Zwrot stawki';
         return stawka;
       } else if (symbol === '💀') {
-        wiadomosc.textContent += 'Zwrot połowy stawki';
+        wiadomosc.textContent = 'Zwrot połowy stawki';
         return stawka / 2;
       } else if (symbol === '💎') {
-        wiadomosc.textContent += 'Zwrot podwójnej stawki';
+        wiadomosc.textContent = 'Zwrot podwójnej stawki';
         return stawka * 2;
       }
     }
   }
 
   if (Object.keys(licznikSymboli).length === 1) {
-    wiadomosc.textContent += 'Zwrot potrójnej stawki';
+    wiadomosc.textContent = 'Zwrot potrójnej stawki';
     return stawka * 3;
   } else if (Object.keys(licznikSymboli).length === 2) {
-    wiadomosc.textContent += 'Zwrot podwójnej stawki';
+    wiadomosc.textContent = 'Zwrot podwójnej stawki';
     return stawka * 2;
   }
 
-  wiadomosc.textContent += 'Przegrana';
+  wiadomosc.textContent = 'Przegrana';
   return 0;
 }
 
@@ -118,9 +116,10 @@ async function krec() {
   }
 
   zetony -= stawka;
-  zetonyWyświetlacz.textContent = zetony;
+  aktualizujZetonyCookies();
 
   krecPrzycisk.disabled = true;
+  
 
   const [symbol1, symbol2, symbol3] = wylosujWynik();
 
@@ -131,8 +130,9 @@ async function krec() {
   ]);
 
   zetony += wyliczWygraną(symbol1, symbol2, symbol3, stawka, wiadomosc);
+  aktualizujZetonyCookies();
+  document.getElementById('token_count').innerText = zetony.toFixed(0);
 
-  zetonyWyświetlacz.textContent = zetony;
   krecPrzycisk.disabled = false;
 }
 
@@ -141,4 +141,8 @@ krecPrzycisk.addEventListener("click", krec);
 function przełączZasady() {
   const zasady = document.getElementById("zasady");
   zasady.style.display = zasady.style.display === "none" ? "block" : "none";
+}
+
+function aktualizujZetonyCookies(){
+  document.cookie = "chips=" + zetony.toFixed(0) + "; SameSite=None; secure; expires=Fri, 20 Aug 2077 12:00:00 UTC; path=/";
 }

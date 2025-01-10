@@ -56,6 +56,7 @@ header #userinfo {
    align-items: center;
    cursor: pointer;
    width: 40vw;
+   color: black;
 }
 
 #kolor-header-menu:hover {

@@ -96,18 +96,18 @@ function mouseUp(e) {
 function updateBet(chip, betName) {
     if (parseInt(activeElement.id.match(/\d+/g)) > localTokens) {
         window.alert("Nie masz wystarczającej ilości żetonów!");
-    } else {
-        if (bets.find(x => x.name === betName) != undefined) {
-            bets.find(x => x.name === betName).bet += chip;
-            document.getElementById(betName).getElementsByTagName('span')[0].innerText = "Zakład: " + bets.find(x => x.name === betName).bet;
-        } else {
-            bets.push({ name: betName, bet: chip });
-            document.getElementById(betName).getElementsByTagName('span')[0].innerText = "Zakład: " + chip;
-        }
-        totalbet += chip;
-        localTokens -= chip;
-        document.getElementById("current_bet").innerText = "Obecna suma zakładów: " + totalbet + ".";
+        return;
     }
+    if (bets.find(x => x.name === betName) != undefined) {
+        bets.find(x => x.name === betName).bet += chip;
+        document.getElementById(betName).getElementsByTagName('span')[0].innerText = "Zakład: " + bets.find(x => x.name === betName).bet;
+    } else {
+        bets.push({ name: betName, bet: chip });
+        document.getElementById(betName).getElementsByTagName('span')[0].innerText = "Zakład: " + chip;
+    }
+    totalbet += chip;
+    localTokens -= chip;
+    document.getElementById("current_bet").innerText = "Obecna suma zakładów: " + totalbet + ".";
 }
 
 function resetBet() {
