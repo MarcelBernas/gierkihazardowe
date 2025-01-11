@@ -233,28 +233,40 @@
         let wszystkiePola;
         let pozostalePola;
 
+        function sprawdzWarunki(stawka, wplacono, rozmiarPlanszy, liczbaBomb){
+            if (stawka < 1) {
+                alert("Stawka nie może być mniejsza od 1, biedaku.");
+                return true;
+            }
+            if (wplacono > (parseInt(document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1]))) {            //refactor this
+                alert("Masz za mało żetonów.");
+                return true;
+            }
+            if (rozmiarPlanszy < 2){
+                alert("Rozmiar planszy nie może być mniejszy od 2.");
+                return true;
+            }
+
+            if (liczbaBomb >= rozmiarPlanszy * rozmiarPlanszy) {
+                alert("Liczba bomb nie może być większa lub równa liczbie pól!");
+                return true;
+            }
+
+            if (liczbaBomb < 1) {
+                alert("Liczba bomb nie może być mniejsza niż 1!");
+                return true;
+            }
+
+            return false;
+        }
+
         function rozpocznijGrę() {
             rozmiarPlanszy = parseInt(rozmiarPlanszyInput.value);
             liczbaBomb = parseInt(liczbaBombInput.value);
             stawka = parseFloat(stawkaInput.value);
             const wplacono = parseFloat(stawkaInput.value);
             
-            if (stawka < 1) {
-                alert("Stawka nie może być mniejsza od 1, biedaku.");
-                return;
-            }
-            if (wplacono > (parseInt(document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1]))) {            //refactor this
-                alert("Masz za mało żetonów.");
-                return;
-            }
-
-            if (liczbaBomb >= rozmiarPlanszy * rozmiarPlanszy) {
-                alert("Liczba bomb nie może być większa lub równa liczbie pól!");
-                return;
-            }
-
-            if (liczbaBomb < 1) {
-                alert("Liczba bomb nie może być mniejsza niż 1!");
+            if (sprawdzWarunki(stawka, wplacono, rozmiarPlanszy, liczbaBomb)) {
                 return;
             }
 
