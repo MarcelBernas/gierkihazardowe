@@ -6,8 +6,30 @@
   <link rel="shortcut icon" href="assets/img/icon.png" type="image/png">
   <title>Automat</title>
   <link rel="stylesheet" href="slotsy.css"> 
+  <link rel="stylesheet" href="header.css">
+  <script src="pliki-cookies.js"></script>
 </head>
-<body>
+<body onload="updateUserInfo()">
+  <header>
+    <div id="kolor-header-menu" onclick="redirectToHome()">
+        <img src="assets/img/casino.png" alt="Logo" id="logo">
+        <h1>Gierki hazardowe</h1>
+    </div>
+
+    <div id="token-display" onclick="resetTokens()">
+        Żetony: <span id="token_count">Ładowanie...</span>
+    </div>
+
+    <div id="userinfo">
+        <img id="user-icon" src="assets/img/user.png" alt="User Icon" style="height: 2.5em; width: auto; margin-right: 0.5em;">
+        <span id="user-name" style="font-size: 1.5em; font-weight: bold; color: #333; cursor: pointer;"
+            onclick="editUserName()">nazwa użytkownika</span>
+        <textarea id="edit-name"
+            style="display: none; font-size: 1.5em; padding: 0.2em; border: 1px solid #ccc; border-radius: 4px; resize: none;"></textarea>
+    </div>
+
+    </div>
+</header>
   <div class="kontener-automatu">
     <h1>Automat</h1>
     <div class="okno-automatu">
@@ -23,7 +45,6 @@
     </div>
     <div class="wynik">
       <p id="wiadomosc"></p>
-      <p>Twoje żetony: <span id="zetony">100</span></p>
     </div>
     <div class="przycisk-zasady">
       <button onclick="przełączZasady()">Zasady gry</button>
