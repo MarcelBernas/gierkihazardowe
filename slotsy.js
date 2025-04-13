@@ -13,7 +13,7 @@ const symbole = [...symboleZwykle, ...symboleSpecjalne];
 
 function losujSymbol() {
   const szansa = Math.random();
-  if (szansa < 0.05) return symboleSpecjalne[Math.floor(Math.random() * symboleSpecjalne.length)];
+  if (szansa < 0.15) return symboleSpecjalne[Math.floor(Math.random() * symboleSpecjalne.length)];
   return symboleZwykle[Math.floor(Math.random() * symboleZwykle.length)];
 }
 
