@@ -134,39 +134,27 @@
   <h1 style="margin-top: 0em; margin-bottom: 20px; color: #333;">Wybierz grę:</h1>
   <div style="display: flex; justify-content: center; align-items: center;">
 
-    <a href="ruletka.html" target="_self" class="karta-gry">
-      <div class="obrazek-gry">
-        <img src="assets/img/wheel.png" alt="Ruletka">
-      </div>
-      <div class="info-gry">
-        <div class="tytul-gry">Ruletka</div>
-        <div class="opis-gry">Postaw na numery, kolory lub sekcje<br>i zakręć by wygrać!</div>
-        <div class="przycisk-play">PLAY</div>
-      </div>
-    </a>
+    <script>
+      function addGame(href, image, name, description) {
+        document.write(`
+        <a href="${href}.html" target="_self" class="karta-gry">
+        <div class="obrazek-gry">
+          <img src="assets/img/${image}" alt="Ruletka">
+        </div>
+        <div class="info-gry">
+          <div class="tytul-gry">${name}</div>
+          <div class="opis-gry">${description}</div>
+          <div class="przycisk-play">PLAY</div>
+        </div>
+      </a>
+      `);
+      }
 
-    <a href="mines.html" target="_self" class="karta-gry">
-      <div class="obrazek-gry">
-        <img src="assets/img/bomb.png" alt="Mines">
-      </div>
-      <div class="info-gry">
-        <div class="tytul-gry">Mines</div>
-        <div class="opis-gry">Zabaw się w sapera, odminuj pole przy okazji mnożąc żetony.</div>
-        <div class="przycisk-play">PLAY</div>
-      </div>
-    </a>
+      addGame("ruletka", "wheel.png", "Ruletka", "Postaw na numery, kolory lub sekcje<br>i zakręć by wygrać!");
+      addGame("mines", "bomb.png", "Bomby", "Zabaw się w sapera, odminuj pole przy okazji mnożąc żetony");
+      addGame("slotsy", "slots.png", "Slotsy", "Zakręć bębnem i wygraj!<br>Im lepsza kombinacja, tym większa nagroda.");
+    </script>
 
-    <a href="slotsy.html" target="_self" class="karta-gry">
-      <div class="obrazek-gry">
-        <img src="assets/img/slots.png" alt="Mines">
-      </div>
-      <div class="info-gry">
-        <div class="tytul-gry">Slots</div>
-        <div class="opis-gry">Zakręć bębnem i wygraj!<br>Im lepsza kombinacja, tym większa nagroda.</div>
-        <div class="przycisk-play">PLAY</div>
-      </div>
-    </a>
-  </div>
 
 </body>
 <footer>
