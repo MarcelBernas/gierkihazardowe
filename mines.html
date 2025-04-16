@@ -6,160 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/icon.png" type="image/png">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="darkmodemines.css">
+    <script src="darkmode.js" type="text/javascript"></script>
     <script src="pliki-cookies.js"></script>
     <title>Gra Mines</title>
-    <style>
-        header {
-            position: fixed;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-
-        .gra-container {
-            text-align: center;
-            border-radius: 8px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .plansza {
-            display: grid;
-            grid-gap: 5px;
-            margin-bottom: 20px;
-            justify-content: center;
-        }
-
-        .komorka-planszy {
-            width: 60px;
-            height: 60px;
-            background-color: #ddd;
-            border: 1px solid #bbb;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-        }
-
-        .komorka-planszy.ujawniona {
-            background-color: #eee;
-            pointer-events: none;
-        }
-
-        .komorka-planszy.bomba {
-            background-color: red;
-        }
-
-        .komorka-planszy.pusta {
-            background-color: #fff;
-        }
-
-        .wynik {
-            font-size: 18px;
-            margin-top: 20px;
-        }
-
-        input,
-        button {
-            padding: 10px 20px;
-            margin-top: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        input[type="number"] {
-            width: 80px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .sterowanie {
-            margin-bottom: 20px;
-        }
-
-        .sterowanie div {
-            margin-bottom: 10px;
-        }
-
-        .gra-container {
-            position: relative;
-        }
-
-        .bomb-image {
-            position: absolute;
-            top: 0;
-            right: 0;
-            transform: translate(50%, -50%);
-            width: 20vh;
-            height: auto;
-            z-index: -1;
-        }
-
-        .flip-horizontal-bottom {
-            -webkit-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-            animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-        }
-
-        @-webkit-keyframes flip-horizontal-bottom {
-            0% {
-                -webkit-transform: rotateX(0);
-                transform: rotateX(0);
-            }
-
-            100% {
-                -webkit-transform: rotateX(-180deg);
-                transform: rotateX(-180deg);
-            }
-        }
-
-        @keyframes flip-horizontal-bottom {
-            0% {
-                -webkit-transform: rotateX(0);
-                transform: rotateX(0);
-            }
-
-            100% {
-                -webkit-transform: rotateX(-180deg);
-                transform: rotateX(-180deg);
-            }
-        }
-
-        .do-lewej {
-            text-align: left;
-        }
-
-        .do-prawej {
-            text-align: right;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            padding: 1.2vh 0;
-            background-color: #bdbdbd;
-            color: #333;
-            text-align: center;
-            font-size: 0.95em;
-        }
-    </style>
 </head>
 
 <body onload="updateUserInfo()">
@@ -176,13 +26,14 @@
         <div id="userinfo">
             <img id="user-icon" src="assets/img/user.png" alt="User Icon"
                 style="height: 2.5em; width: auto; margin-right: 0.5em;">
-            <span id="user-name" style="font-size: 1.5em; font-weight: bold; color: #333; cursor: pointer;"
+            <span id="user-name"
                 onclick="editUserName()">nazwa użytkownika</span>
             <textarea id="edit-name"
                 style="display: none; font-size: 1.5em; padding: 0.2em; border: 1px solid #ccc; border-radius: 4px; resize: none;"></textarea>
         </div>
 
         </div>
+        <div id="darkmode-toggle" onclick="toggleDarkMode()" title="Przełącz tryb">🌙</div>
     </header>
     <div class="gra-container">
         <h1>Gra Mines</h1>
@@ -208,7 +59,8 @@
         <div id="wynik" class="wynik">Wpłacono: 0</div>
         <div id="aktualnaStawka" class="wynik">Stawka: 0</div>
 
-        <img src="assets/img/bomb.png" alt="Bomb" class="bomb-image">
+        <img style="z-index:99; width: 150px;" src="assets/img/bomb.png" alt="Bomb" class="bomb-image">
+        
     </div>
     <footer>
         <p>Strona stworzona przez Mikołaja Grabowskiego, Marcela Bernasia i Łukasza Dolnego.</p>

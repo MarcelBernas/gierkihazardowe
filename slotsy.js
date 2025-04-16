@@ -7,13 +7,13 @@ const stawkaWejście = document.getElementById("stawka");
 const krecPrzycisk = document.getElementById("krec");
 
 let zetony = document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1];
-const symboleZwykle = ["🍒", "🍋", "🍊", "🍇", "⭐"];
+const symboleZwykle = ["🍒", "🍋", "🍊", "🍇", "⭐","🍉"];
 const symboleSpecjalne = ["🍀", "💀", "💎"];
 const symbole = [...symboleZwykle, ...symboleSpecjalne];
 
 function losujSymbol() {
   const szansa = Math.random();
-  if (szansa < 0.15) return symboleSpecjalne[Math.floor(Math.random() * symboleSpecjalne.length)];
+  if (szansa < 0.05) return symboleSpecjalne[Math.floor(Math.random() * symboleSpecjalne.length)];
   return symboleZwykle[Math.floor(Math.random() * symboleZwykle.length)];
 }
 
@@ -74,7 +74,7 @@ function wyliczWygraną(symbol1, symbol2, symbol3, stawka, wiadomosc) {
     licznikSymboli[symbol] = (licznikSymboli[symbol] || 0) + 1;
   });
 
-  // kalkulowanie stawki na podstawie symboli specjalnych
+  // kalkulowanie stawki na podstawie symboli specjalnych noway
   for (const symbol in licznikSymboli) {
     if (symboleSpecjalne.includes(symbol)) {
       if (symbol === '🍀') {

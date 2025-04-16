@@ -125,6 +125,11 @@ function resetBet() {
 function startRoulette() {
     if (isRouletteSpinning == false && totalbet > 0) {
         isRouletteSpinning = true;
+        rouletteStrip.style.transition='none';
+
+        rouletteStrip.style.transform='translateX(0px)';
+        void rouletteStrip.offsetWidth;
+
         const boxWidth = 96;
         const visibleWidth = 960;
         const totalLength = numbers.length * 5;

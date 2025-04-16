@@ -1,0 +1,213 @@
+body.darkmode {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.darkmode header {
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+body.darkmode .karta-gry {
+  background-color: #2a2a2a;
+  color: #ddd;
+}
+
+body.darkmode .przycisk-play {
+  background: #444;
+}
+
+body.darkmode .karta-gry:hover .przycisk-play {
+  background: #00c853;
+}
+
+body.darkmode footer {
+  background-color: #2e2e2e;
+  color: #ccc;
+}
+
+body.darkmode {
+  color: #000;
+}
+
+
+.gra-container {
+  text-align: center;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  position: fixed;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+
+
+.plansza {
+  display: grid;
+  grid-gap: 5px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.komorka-planszy {
+  width: 60px;
+  height: 60px;
+  background-color: #ddd;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.komorka-planszy.ujawniona {
+  background-color: #eee;
+  pointer-events: none;
+}
+
+.komorka-planszy.bomba {
+  background-color: red;
+}
+
+.komorka-planszy.pusta {
+  background-color: #fff;
+}
+
+.wynik {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+input,
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+input[type="number"] {
+  width: 80px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.sterowanie {
+  margin-bottom: 20px;
+}
+
+.sterowanie div {
+  margin-bottom: 10px;
+}
+
+.gra-container {
+  position: relative;
+}
+
+.bomb-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 20vh;
+  height: auto;
+  z-index: -1;
+}
+
+.flip-horizontal-bottom {
+  -webkit-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@-webkit-keyframes flip-horizontal-bottom {
+  0% {
+      -webkit-transform: rotateX(0);
+      transform: rotateX(0);
+  }
+
+  100% {
+      -webkit-transform: rotateX(-180deg);
+      transform: rotateX(-180deg);
+  }
+}
+
+@keyframes flip-horizontal-bottom {
+  0% {
+      -webkit-transform: rotateX(0);
+      transform: rotateX(0);
+  }
+
+  100% {
+      -webkit-transform: rotateX(-180deg);
+      transform: rotateX(-180deg);
+  }
+}
+
+.do-lewej {
+  text-align: left;
+}
+
+.do-prawej {
+  text-align: right;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1.2vh 0;
+  background-color: #bdbdbd;
+  color: #333;
+  text-align: center;
+  font-size: 0.95em;
+}
+
+
+
+.pinkmode {
+  background-color: rgb(248, 169, 182);
+  color: rgb(0, 0, 0) ;
+}
+ 
+.pinkmode #darkmode-toggle {
+  background-color: hotpink;
+  color: white;
+}
+ 
+.pinkmode a, .pinkmode button {
+  background-color: deeppink;
+  border-color: deeppink;
+  color: white;
+}
+
+body.pinkmode footer {
+  background-color: #df59b2;
+  color: #ccc;
+}
+
+body.pinkmode header {
+  background-color: #df59b2;
+  color: #e0e0e0;
+}

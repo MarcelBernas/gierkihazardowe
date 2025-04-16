@@ -1,111 +1,14 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="assets/img/icon.png" type="image/png">
   <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="darkmode.css">
   <script src="pliki-cookies.js"></script>
   <title>Gierki hazardowe</title>
-  <style>
-    header {
-      position: fixed;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 90vh;
-      background-color: #f5f5f5;
-      flex-direction: column;
-      padding-top: 3vh;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      padding: 1.2vh 0;
-      background-color: #bdbdbd;
-      color: #333;
-      text-align: center;
-      font-size: 0.95em;
-    }
-
-    .karta-gry {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 13vw;
-      text-align: center;
-      cursor: pointer;
-      text-decoration: none;
-      transition: box-shadow 0.3s ease;
-      margin-right: 1.4vw;
-      margin-bottom: 2vh;
-    }
-
-    .obrazek-gry {
-      padding: 5%;
-    }
-
-    .obrazek-gry img {
-      width: 90%;
-      height: auto;
-      transition: transform 0.3s ease;
-    }
-
-    .info-gry {
-      padding: 1em;
-    }
-
-    .tytul-gry {
-      font-size: 2vw;
-      font-weight: bold;
-      margin-bottom: 0.7vh;
-      color: #333;
-      transition: color 0.3s ease;
-    }
-
-    .opis-gry {
-      font-size: 1vw;
-      color: #555;
-    }
-
-    .przycisk-play {
-      padding: 1.1vh 3vw;
-      background: #868a89;
-      color: white;
-      font-size: 1.2vw;
-      font-weight: bold;
-      border-radius: 8px;
-      text-transform: uppercase;
-      transition: background-color 0.3s ease;
-      margin-top: 1.2vh;
-    }
-
-    .karta-gry:hover {
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .karta-gry:hover .obrazek-gry {
-      padding: 2%;
-    }
-
-    .karta-gry:hover .obrazek-gry img {
-      transform: scale(1.05);
-    }
-
-    .karta-gry:hover .przycisk-play {
-      background: #098725;
-    }
-
-    .karta-gry:hover .tytul-gry {
-      color: #098725;
-    }
-  </style>
 </head>
 
 <body onload="updateUserInfo()">
@@ -115,25 +18,21 @@
       <h1>Gierki hazardowe</h1>
     </div>
 
-
-
     <div id="token-display" onclick="resetTokens()">
       Żetony: <span id="token_count">Ładowanie...</span>
     </div>
 
     <div id="userinfo">
-      <img id="user-icon" src="assets/img/user.png" alt="User Icon" style="height: 2.5em; width: auto; margin-right: 0.5em;">
-      <span id="user-name" style="font-size: 1.5em; font-weight: bold; color: #333; cursor: pointer;"
-        onclick="editUserName()">nazwa użytkownika</span>
+      <img id="user-icon" src="assets/img/user.png" alt="User Icon" style="height: 2.5em; width: auto; margin-right: 0.5em; border-radius: 50%;">
+      <span id="user-name" onclick="editUserName()">nazwa użytkownika</span>
       <textarea id="edit-name"
         style="display: none; font-size: 1.5em; padding: 0.2em; border: 1px solid #ccc; border-radius: 4px; resize: none;"></textarea>
     </div>
 
-    </div>
+    <div id="darkmode-toggle" onclick="toggleDarkMode()" title="Przełącz tryb">🌙</div> 
   </header>
-  <h1 style="margin-top: 0em; margin-bottom: 20px; color: #333;">Wybierz grę:</h1>
-  <div style="display: flex; justify-content: center; align-items: center;">
 
+  <div style="display: flex; justify-content: center; align-items: center;">
     <script>
       function addGame(href, image, name, description) {
         document.write(`
@@ -148,17 +47,20 @@
         </div>
       </a>
       `);
+      
       }
 
       addGame("ruletka", "wheel.png", "Ruletka", "Postaw na numery, kolory lub sekcje<br>i zakręć by wygrać!");
-      addGame("mines", "bomb.png", "Mines", "Zabaw się w sapera, odminuj pole przy okazji mnożąc żetony");
+      addGame("mines", "bomb.png", "Bomby", "Zabaw się w sapera, odminuj pole przy okazji mnożąc żetony");
       addGame("slotsy", "slots.png", "Slotsy", "Zakręć bębnem i wygraj!<br>Im lepsza kombinacja, tym większa nagroda.");
     </script>
 
 
+  </div>
 </body>
+
 <footer>
   <p>Strona stworzona przez Mikołaja Grabowskiego, Marcela Bernasia i Łukasza Dolnego.</p>
 </footer>
-</body>
+
 </html>

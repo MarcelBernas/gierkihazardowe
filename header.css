@@ -2,7 +2,7 @@ header {
    top: 0;
    left: 0;
    width: 100%;
-   background-color: #e0e0e0;  
+   background-color: #ccc;  
    text-align: left;
    display: flex;
    align-items: center;
@@ -22,6 +22,7 @@ header h1 {
    display: inline-block;
    line-height: 1.5em;
 }
+
 header #userinfo {
    text-align: center;
    font-weight: bold;
@@ -61,4 +62,39 @@ header #userinfo {
 
 #kolor-header-menu:hover {
    color: #098725;
+}
+
+#darkmode-toggle {
+   margin-right: 2em;
+   font-size: 1.5em;
+   cursor: pointer;
+   user-select: none;
+   position: absolute;
+   right: 8em;
+   top: 1.2em;
+   transition: color 0.3s ease;
+}
+
+#darkmode-toggle:hover {
+   color: #098725;
+}
+
+
+header, #userinfo, #kolor-header-menu, #token-display {
+   transition: background-color 0.4s ease, color 0.4s ease;
+ }
+ 
+ #darkmode-toggle {
+   transition: color 0.3s ease;
+   position: absolute;
+   right: 250pt;
+ }
+ 
+body.darkmode header,
+body.darkmode header h1,
+body.darkmode #userinfo,
+body.darkmode #userinfo span,
+body.darkmode #token-display,
+body.darkmode #kolor-header-menu {
+  color: #ccc;
 }
