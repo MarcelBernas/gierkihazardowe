@@ -9,7 +9,6 @@ function updateUserInfo() {
   const username = document.cookie.split("; ").find((row) => row.startsWith("username="))?.split("=")[1];
   document.getElementById('user-name').innerText = username;
  
-
   if (username === 'gieras') {
     document.getElementById('user-icon').src = 'assets/img/gieraspfp.png';
   }
@@ -25,12 +24,16 @@ function updateUserInfo() {
   if (username === 'cekol') {
     document.getElementById('user-icon').src = 'assets/img/cekol.png';
   }
+  if (username === 'warkusz') {
+    document.getElementById('user-icon').src = 'assets/img/pitulecDiabel.jpg';
+  }
+ 
  
   const chips = document.cookie.split("; ").find((row) => row.startsWith("chips="))?.split("=")[1];
   document.getElementById('token_count').innerText = chips;
  
-  
-  if (chips === "69" || chips === "6969"||chips==="696969") {
+
+  if (chips === "69" || chips === "6969") {
     document.body.classList.add("pinkmode");
   } else {
     document.body.classList.remove("pinkmode");
@@ -96,6 +99,4 @@ function toggleDarkMode() {
     document.body.classList.add("pinkmode");
   }
 })();
- 
 
- 

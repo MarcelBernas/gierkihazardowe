@@ -1,0 +1,212 @@
+header {
+    position: sticky;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    background-color: #f5f5f5;
+    color: black;
+}
+
+.roulette-container {
+    position: relative;
+    width: 960px;
+    height: 120px;
+    margin-top: 2.5vh;
+    overflow: hidden;
+    background-color: black;
+    border-radius: 10px;
+    border: 5px solid #4d4d4d;
+}
+
+.roulette-strip {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 120px;
+}
+
+.box {
+    width: 96px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+.box.green {
+    background-color: green;
+}
+
+.box.red {
+    background-color: red;
+}
+
+.box.black {
+    background-color: black;
+}
+
+
+.arrow {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid yellow;
+}
+
+.result {
+    text-transform: uppercase;
+    margin-top: 2vh;
+    font-size: 3vh;
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 4vh;
+    background-color: green;
+    border: 5px solid 4d4d4d;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-right: 1vw;
+    margin-left: 1vw;
+}
+
+button:hover {
+    background-color: rgb(1, 158, 1);
+}
+
+.bet-container {
+    margin-top: 2.5vh;
+    display: flex;
+    align-items: center;
+}
+
+.bet-container td {
+    font-size: 24px;
+    border: 5px solid #4d4d4d;
+    padding: .5vh;
+    text-align: center;
+    cursor: default;
+}
+
+.bet-container table {
+    font-size: 3vh;
+    border-collapse: collapse;
+}
+
+#current_bet {
+    margin-top: 2vh;
+    font-size: 3vh;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+td.black {
+    background-color: black;
+    width: 3.5vw;
+    color: white;
+}
+
+td.red {
+    background-color: red;
+    width: 3.5vw;
+    color: white;
+}
+
+td.zero {
+    background-color: green;
+    width: 3.5vw;
+    color: white;
+}
+
+td.gray {
+    background-color: #adadad;
+}
+
+td.rowbet {
+    background-color: #adadad;
+    width: 3.5vw;
+}
+
+.chips {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 9;
+    background-size: 80px 80px;
+    position: absolute;
+}
+
+#chips_container {
+    border-radius: 10px;
+    margin-top: 1.5vh;
+    background-color: #adadad;
+    border: 5px solid #4d4d4d;
+    width: 400px;
+    height: 80px;
+    padding: 10px;
+}
+
+#c50 {
+    background-image: url('assets/img/50.png');
+    transform: translateX(0);
+}
+
+#c100 {
+    background-image: url('assets/img/100.png');
+    transform: translateX(107px);
+}
+
+#c500 {
+    background-image: url('assets/img/500.png');
+    transform: translateX(214px);
+}
+
+#c1000 {
+    background-image: url('assets/img/1000.png');
+    transform: translateX(320px);
+}
+
+#red {
+    background-color: red;
+    color: white;
+}
+
+#black {
+    background-color: black;
+    color: white;
+}
+
+.bet {
+    position: relative;
+    top: -5px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 32px;
+    width: 100%;
+    padding: 1.2vh 0;
+    background-color: #bdbdbd;
+    color: #333;
+    text-align: center;
+    font-size: 0.95em;
+}
