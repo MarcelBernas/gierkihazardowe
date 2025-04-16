@@ -8,7 +8,7 @@ function initializeDarkMode() {
       document.body.classList.add('darkmode');
     }
   }
-  
+   
   // Funkcja przełączająca tryb
   function toggleDarkMode() {
     // Sprawdź, czy tryb ciemny jest aktywny
