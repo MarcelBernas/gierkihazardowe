@@ -1,0 +1,22 @@
+ <link rel="stylesheet" href="index.css"> 
+
+
+
+
+
+
+ function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    const isDark = document.body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", isDark);
+    document.getElementById("darkModeToggle").textContent = isDark ? "☀️" : "🌙";
+  }
+
+  function updateUserInfo() {
+    const isDark = localStorage.getItem("darkMode") === "true";
+    if (isDark) {
+      document.body.classList.add("dark-mode");
+      const toggle = document.getElementById("darkModeToggle");
+      if (toggle) toggle.textContent = "☀️";
+    }
+  }
