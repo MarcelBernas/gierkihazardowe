@@ -1,5 +1,5 @@
 let newX = 0, newY = 0, startX = 0, startY = 0;
-let activeElement;
+let activeElement; 
 
 let returnTopValue;
 let returnLeftValue;
