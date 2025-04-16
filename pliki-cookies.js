@@ -11,7 +11,7 @@ function updateUserInfo() {
  
   if (username === 'gieras') {
     document.getElementById('user-icon').src = 'assets/img/gieraspfp.png';
-  }
+  } 
   if (username === 'pitulec') {
     document.getElementById('user-icon').src = 'assets/img/pitulec.jpeg';
   }
