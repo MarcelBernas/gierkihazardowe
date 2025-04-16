@@ -10,7 +10,7 @@ let zetony = document.cookie.split("; ").find((row) => row.startsWith("chips="))
 const symboleZwykle = ["🍒", "🍋", "🍊", "🍇", "⭐","🍉"];
 const symboleSpecjalne = ["🍀", "💀", "💎"];
 const symbole = [...symboleZwykle, ...symboleSpecjalne];
-
+ 
 function losujSymbol() {
   const szansa = Math.random();
   if (szansa < 0.05) return symboleSpecjalne[Math.floor(Math.random() * symboleSpecjalne.length)];
