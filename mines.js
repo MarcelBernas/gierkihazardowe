@@ -11,7 +11,7 @@ let rozmiarPlanszy = 4;
 let liczbaBomb = 3;
 let graAktywna = false;
 let danePlanszy = [];
-let ujawnionePola = 0;
+let ujawnionePola = 0; 
 let stawka = 1;
 let trafionePola = 0;
 let wszystkiePola;
